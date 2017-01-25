@@ -53,9 +53,10 @@ public class wallpaper extends CordovaPlugin
 			}
 			else //normal path
 			{
-				InputStream instr = assetManager.open(image);
-				bitmap = BitmapFactory.decodeStream(instr);
-			}
+				/*InputStream instr = assetManager.open("www/" + image);
+				bitmap = BitmapFactory.decodeStream(instr);*/
+				bitmap = BitmapFactory.decodeFile(image);	
+				}
 			WallpaperManager myWallpaperManager = WallpaperManager.getInstance(context);
 			myWallpaperManager.setBitmap(bitmap);
 		}
