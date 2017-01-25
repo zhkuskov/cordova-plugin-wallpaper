@@ -15,10 +15,20 @@ wallpaper.prototype.setImage = function(image)
     }
 };
 
-function setBase64(base64)
+function setBase64(base64, s, err)
 {
-    var successCallback = null;
+    if(s === undefined){
+ var successCallback = null;
+    }else{
+ var successCallback = s;
+    }//if
+    
+    if(err === undefined){
     var errorCallback = null;
+    }else{
+      var errorCallback = err;   
+    }//if
+    
     var services = "wallpaper";
     var dependentProperties = [];
     dependentProperties.push(base64, true);
@@ -35,7 +45,7 @@ wallpaper.prototype.setImageBase64 = function(base64)
     setBase64(base64);
 };
 
-wallpaper.prototype.setImageHttp = function(url)
+wallpaper.prototype.setImageHttp = function(url, s, err)
 {
     var request = null;
     if(window.XMLHttpRequest)
@@ -70,7 +80,7 @@ wallpaper.prototype.setImageHttp = function(url)
                 raw += String.fromCharCode.apply(null, subArray);
             }
             var base64 = btoa(raw);
-            setBase64(base64);
+            setBase64(base64, s, err);
         }
         function XHRerror(error)
         {
