@@ -1,9 +1,17 @@
 function wallpaper() {}
 
-wallpaper.prototype.setImage = function(image)
+wallpaper.prototype.setImage = function(image, s, err)
 {
+    if(s === undefined){
     var successCallback = null;
+    }else{
+         var successCallback = s;
+    }//if
+    if(err === undefined){
     var errorCallback = null;
+    }else{
+        var errorCallback = err;
+    }//if
     var services = "wallpaper";
     var dependentProperties = [];
     dependentProperties.push(image, false);
